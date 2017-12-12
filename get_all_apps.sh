@@ -29,7 +29,7 @@ function download_apk {
 		echo "Detect multiple version..."
 		for ((i=0;i<${#MULTIPLE_VERSIONS[@]};i++)); do
 			# redefined variables
-			FULL_NAME_APK="${FULL_NAME_APK}_${MULTIPLE_VERSIONS[i]}"
+			FULL_NAME_APK="$(echo ${FULL_NAME_APK} | sed "s#_[0-9]\+##")_${MULTIPLE_VERSIONS[i]}"
 			APK_VERSION=`echo ${FULL_NAME_APK} | sed 's#Mi Fit ##g'`
 			THIS_APK_DIR="${APK_DIR}${APK_VERSION}"
 			do_download_apk "${MULTIPLE_URLS[i]}/download/" "$THIS_APK_DIR" "$APK_VERSION" "$FULL_NAME_APK"
