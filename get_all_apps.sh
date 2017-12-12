@@ -105,7 +105,7 @@ function do_get_list_of_apk {
 	LIST_OF_APK=`xidel ${TMP_LIST} -s --extract '//h5[starts-with(@title, "Mi Fit")]/a/@href'`
 	NEXT_PAGE=`xidel ${TMP_LIST} -s --extract '//div[@class="pagination desktop"]//a[@class="nextpostslink"]'`
 	 if [ -n "${NEXT_PAGE}" ]; then
-		 echo $(get_list_of_apk $(($PAGE+1)) "${LIST_OF_APK}")
+		 echo $(get_list_of_apk $(($PAGE+1)) "${PREVIOUS_PAGE} ${LIST_OF_APK}")
 	 else
 		 echo "${PREVIOUS_PAGE} ${LIST_OF_APK}"
 	 fi
